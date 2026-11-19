@@ -719,7 +719,7 @@ def stage_basalt():
 
 
 def stage_llama(np_slots, ctx, port, tag, arms, binary=None, model=None,
-                alias="iq3s-llama", ngl="99", variants=None, modern=True):
+                alias="iq3s-llama", ngl="99", variants=None, modern=True, extra=None):
     log(f"STAGE {tag}: serve up np={np_slots} ctx={ctx}")
     logfile = f"{B}/logs/{tag}.serve.log"
     eng = Engine("llama", f"http://127.0.0.1:{port}", alias)
@@ -728,7 +728,7 @@ def stage_llama(np_slots, ctx, port, tag, arms, binary=None, model=None,
     h = None
     for (moe, kv8) in variants:
         cmd = llama_serve_cmd(np_slots, ctx, port, ncpu_moe=moe, kv8=kv8, ngl=ngl,
-                              binary=binary, model=model, alias=alias, modern=modern)
+                              binary=binary, model=model, alias=alias, modern=modern, extra=extra)
         summary((tag, "load_try", f"moe={moe}", f"kv8={kv8}"))
         p, fh = start_serve(cmd, logfile + (".moe" + str(moe) if moe else ""))
         h, rc, load_s = wait_health(eng, p, t=420)
@@ -970,9 +970,10 @@ def stage_bitnet():
                           f"{B}/logs/N_sust.telem.csv")
         finally:
             tp.terminate()
-    stage_llama(4, 4096, port, "N", [lambda e, l, t: armsn(e, l, t)],
+    stage_llama(1, 4096, port, "N", [lambda e, l, t: armsn(e, l, t)],
                 binary=binp, model=gguf, alias="bitnet", ngl="0",
-                variants=[(None, False)], modern=False)
+                variants=[(None, False)], modern=False,
+                extra=["--chat-template", "chatml"])
 
 
 def stage_llamacpu():
@@ -986,7 +987,7 @@ def stage_llamacpu():
         files = [pf("p4k_a")] + ([pf("p4k_b")] if os.path.exists(pf("p4k_b")) else [])
         sustained_arm(eng, "C_sust", 15 * 60, files, 128,
                       f"{B}/logs/C_sust.telem.csv")
-    stage_llama(4, 40000, port, "C", [lambda e, l, t: armc(e, l, t)],
+    stage_llama(1, 40000, port, "C", [lambda e, l, t: armc(e, l, t)],
                 ngl="0", variants=[(None, False)])
 
 
@@ -1018,7 +1019,7 @@ def main():
                          c, 256, tag + "_load")
             sustained_arm(eng, "L2_sust", 30 * 60, [pf("p4k_a"), pf("p32k_a")], 192,
                           f"{B}/logs/L2_sust.telem.csv")
-        stage_llama(8, 270336, LLAMA_PORTS[1], "L2", [lambda e, l, t: arms2(e, l, t)])
+        stage_llama(8, 327680, LLAMA_PORTS[1], "L2", [lambda e, l, t: arms2(e, l, t)])
     elif stage == "verify500x":
         stage_verify500x()
     elif stage == "verify500x2":
@@ -1027,6 +1028,9 @@ def main():
         stage_bitnet()
     elif stage == "llamacpu":
         stage_llamacpu()
+    elif stage == "llamaopt":
+        import llama_opt
+        llama_opt.run()
 
 
 if __name__ == "__main__":

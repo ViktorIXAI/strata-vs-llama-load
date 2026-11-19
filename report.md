@@ -2,6 +2,8 @@
 
 Run date: 2026-11-19, 00:16–05:53 CET, single box, detached driver. Driver deadline 05:50;
 arms that did not finish before it are listed in §8 as missing, not silently dropped.
+The BitNet CPU ladder was re-run after the deadline at 08:28–08:52 and is published as the
+appendix §10.
 
 Hardware: one RTX 5090 Laptop (24 GB VRAM, power-limited part), 64 GB host RAM
 (≈60 GiB usable), AMD Zen server CPU (15 pool workers), PCIe 5.0 x8 (16 GT/s), Linux, CUDA 13.0.
@@ -15,7 +17,7 @@ Engines under test (all with the same arms, same prompts, `temperature: 0`, SSE 
 | **Basalt** (production brain) | 0.4.1, llama.cpp-family server | `ctx=196608`, `kv=int8`, resident-experts + resident-cpu-experts, `resident-budget=46GiB`, `ram-cache=6144MiB`, `conversation-cache-slots=6`, `disk-cache=20480MiB`, `spec=8`, expert-profile, vision=dynamic, port 18084, production config unchanged |
 | **Strata** (fork, candidate) | 0.1.62, winning probe config `v1_profile_ctx196k` | `ctx=196608`, `kv=int8`, expert cache 16,888 MiB (8,697/24,576 expert slots resident, `pcie_frac=0.10`), `conversation-cache-mib=2560`, `-slots=4`, `min-free-mib=1024`, `min-tokens=4096`, `prefill_cap=16384`, MTP `mtp_max=4` + lookup 3, `pool_workers=15` |
 | **llama.cpp** (external reference) | b12531, build 214, commit `e4b620af1` | `-ngl 99 --flash-attn on --reasoning off --cache-type-k q8_0 --cache-type-v q8_0 --n-cpu-moe 48`; L1: `-np 1 -c 198144` (loaded n_ctx_slot 198144); L2: `-np 8 -c 270336` → **auto-fitted down to n_ctx_slot 33792** |
-| BitNet (reference arm) | i1 GGUF, CPU-only | single sustained arm only (§7, §8) |
+| BitNet (CPU appendix, §10) | Microsoft BitNet fork, llama-server v9918, i2_s kernels, CPU-only | **different model** — BitNet b1.58-2B-4T (~2.4 B ternary), ctx 4096; engine-class reference only, not comparable to the IQ3_S columns |
 
 Prompt set: deterministic seeded corpus (seed 20261117), identical text files for every engine:
 `p4k, p32k, p64k_code, p128k, p184k, p40k, p32k_a/b/c, p4k_a, p4k_f1`. Corpus is private
@@ -293,7 +295,7 @@ engine and a different cache implementation.
 
 ## 7. Sustained 30-minute arm (c=2, 32 k prompts, 192-token answers, 1 Hz telemetry)
 
-| metric | Basalt | Strata | llama.cpp | BitNet i1 (CPU, 15 min) |
+| metric | Basalt | Strata | llama.cpp | llama.cpp b12531 CPU-only, IQ3_S (stage C, 15 min) |
 |---|---|---|---|---|
 | duration s | 1802.7 | 1802.1 | 1804.1 | 918.7 |
 | requests done / errors | 829 / 0 | 1285 / 0 | 264 / **263** | 80 / 0 |
@@ -310,6 +312,11 @@ engine and a different cache implementation.
 | VRAM peak MiB | 23,574 | 23,682 | 14,216 | 1,004 |
 | host RAM min available | 5.94 GiB | 4.43 GiB (RSS 53.5 GiB) | 55.62 GiB | 54.88 GiB |
 
+* **Label correction (19.11, 09:4x):** in the first publication this fourth column was labelled
+  *"BitNet i1 (CPU, 15 min)"*. It is actually **stage C — llama.cpp b12531 running the same IQ3_S
+  model with `--n-gpu-layers 0`**, `np=4 -c 40000` (10,240 tokens/slot, so its `C_single/p32k` arm
+  was context-rejected, now in §8). The numbers are unchanged; they belong to stage C and stay
+  valid as the honest "no GPU at all" baseline for *our* model. The real BitNet arm is in §10.
 * No thermal throttling anywhere: the `SW Thermal Slowdown` (0x20) and `HW Thermal Slowdown` (0x40)
   bits never appear. The `0x4 SwPowerCap` bit is this laptop GPU sitting at its power limit — normal,
   not a fault. A further undocumented flag bit (`0x400`) is present on most samples and is reported
@@ -329,11 +336,13 @@ engine and a different cache implementation.
 | `L2_load/load32k_c2/c4/c8` | 0 of 14 requests | `request (39385 tokens) exceeds the available context size (33792 tokens), try increasing it` (277 such lines in the serve log); KV probe `HTTP 501: 'Not Implemented'` |
 | `L1/L2` first attempts (00:53 run) | LOAD_FAILED | `error: invalid argument: --fa` (b12528 renamed the flag to `--flash-attn on`; fixed in the next launch) |
 | `L2_sust` | 263 of 264 requests errored | same context-size rejection for the 32 k prompts in the loop |
+| `C_single/p32k` (stage C, 05:37) | FAILED | `<HTTPError 400: 'Bad Request'>` — 39,228-token prompt vs 10,240-token slot (`np=4 -c 40000`); `C_sust` uses 4 k prompts instead |
+| `N_single`, `N_warm_warm` (BitNet first attempt, 05:34) | all FAILED | `N_single/p1k: FAILED <HTTPError 400: 'Bad Request'>` (same for p3k and warm arms): harness launched the 4096-token context with `np=4` → 1,024 tokens/slot, every prompt rejected; the stage then died on `AttributeError: 'NoneType' object has no attribute 'get'`. Replaced by the 08:28 re-run with `np=1` (§10), which completed every arm |
 | `S_single/p184k`, first attempt (01:56) | purged | `ttft=None decode=4.3`, `pp=0` — thinking-overflow rows; also `S_load` dec_mean 14.2 (01:57) purged |
 | `B_sust` duplicate row (00:45) | purged | `req=538 err=1859328` — harness counter corruption, the clean 00:53 row is used |
 | Basalt p4k/p32k/p64k/p128k "cold" ladder | not cold | engine reports 99.99 % reused (persistent disk conversation cache); no cold read of those prompts exists in the captured serve log |
 | p184k token counts | unexplained spread | 229,129 (Basalt) vs 188,724 (Strata) vs 184,098 (llama.cpp) on the same file |
-| **missing at deadline 05:50** | not run | llama.cpp concurrency at a fitted context that fits 32 k; llama.cpp warm/500× verification; repeated V5 answer-agreement study; Strata `reasoning_budget` sweep; BitNet beyond one sustained arm; D1–D4 quarters for Strata (`/tokenize`-based quarter cut did not capture) |
+| **missing at deadline 05:50** | not run | llama.cpp concurrency at a fitted context that fits 32 k; llama.cpp warm/500× verification; repeated V5 answer-agreement study; Strata `reasoning_budget` sweep; BitNet beyond one sustained arm (the BitNet ladder itself was completed post-deadline at 08:28, §10); D1–D4 quarters for Strata (`/tokenize`-based quarter cut did not capture) |
 
 ---
 
@@ -397,3 +406,111 @@ Local account paths → `$HOME`, model-store paths → `<model-store>`, LAN addr
 `[local-network-redacted]`, API-key values → `<REDACTED>` (values were never printed anywhere in
 the pipeline; key fields were reported as lengths only). Prompt corpus texts excluded. Raw scan
 reports, the gate script and the scanner rule file are kept **outside** this tree by design.
+
+---
+
+## 10. CPU appendix: Microsoft BitNet engine
+
+Re-run window: 2026-11-19 08:28–08:52 CET, same box, same harness (`harness/loadbench.py`,
+stage `bitnet`, tags `N_*`), GPU untouched by the measured binary.
+
+### 10.1 Read this first — different engine, **different model**
+
+* Engine: Microsoft's [BitNet](https://github.com/microsoft/BitNet) llama.cpp fork with the i2_s
+  ternary kernels — `llama-server version: 9918 (390c30775)`, built with Clang 18.1.3, **CPU-only**
+  (serve log: `warning: no usable GPU found, --gpu-layers option will be ignored`).
+* Model: **BitNet b1.58-2B-4T** (`ggml-model-i2_s.gguf`), a ~2.4 B-parameter 1.58-bit ternary model
+  with a **4,096-token context** — not the 54.5 GB Qwen3.8-Flash-Next IQ3_S MoE measured in §§1–7.
+  The two differ by roughly 20× in parameters and 48× in context.
+* Consequence: the `N_*` rows are an **engine-class reference** (what a llama.cpp fork can do on
+  this CPU through this harness), **not** a same-model comparison. Quoting 39 tok/s from this
+  appendix next to the 21–28 tok/s or 94–172 tok/s IQ3_S columns is a category error.
+* The context ladder is truncated to what the model can hold: `p1k`/`p3k` are the first 4,000 /
+  11,500 characters of the corpus `p4k` file (engine-reported 1,177 / 3,830 tokens). No arm reaches
+  64 k tokens, so the 5-marker `CONTROL` recall probe never ran for `N_*` — the model cannot fit a
+  prompt that would carry one.
+* Prompt corpus, seeds, SSE client and timing method are identical to §9.3.
+
+Serve command (model-store placeholder per §9.5):
+
+```bash
+<model-store>/BitNet/build/bin/llama-server \
+    -m <model-store>/BitNet/models/BitNet-b1.58-2B-4T/ggml-model-i2_s.gguf \
+    --alias bitnet -ngl 0 -c 4096 -np 1 --host 127.0.0.1 --port 18085 \
+    --chat-template chatml
+```
+
+Loaded in 3 s (build log `logs/bitnet-build.log`; install via the repo's `setup_env.py -q i2_s`,
+driver `harness/bitnet_chain.sh`).
+
+### 10.2 Superseded first attempt (05:34) — verbatim
+
+The in-deadline attempt failed every arm and is kept in `logs/stages/stage_bitnet.out`:
+
+```
+N_single/p1k: FAILED <HTTPError 400: 'Bad Request'>
+N_single/p3k: FAILED <HTTPError 400: 'Bad Request'>
+N_warm_warm/warm_turn1_cold: FAILED <HTTPError 400: 'Bad Request'>
+N_warm_warm foreign chats failed: <HTTPError 400: 'Bad Request'>
+```
+
+Cause was the harness, not the engine: stage `bitnet` passed `np=4` into a 4,096-token context →
+1,024 tokens/slot, so every prompt of ≥1,177 tokens was context-rejected. The stage then died on
+`AttributeError: 'NoneType' object has no attribute 'get'`. The 08:28 re-run used `np=1` and added
+`--chat-template chatml`; every arm below comes from that run. The 05:34 rows are superseded.
+
+### 10.3 Single-request arms
+
+| arm | prompt tok | TTFT s | prefill tok/s (TTFT-derived) | decode tok/s | D1–D4 |
+|---|---|---|---|---|---|
+| `N_single/p1k` | 1,177 | 1.104 | ≈1,066 | 39.2 | 41.5 / 40.0 / 40.5 / 41.0 |
+| `N_single/p3k` | 3,830 | 3.757 | ≈1,019 | 33.4 | 33.6 / 33.1 / 33.1 / 33.6 |
+
+Decode is flat across quarters (±0.5 tok/s) — no speculative decode or thinking-budget accounting is
+involved, so client and engine numbers here mean the same thing.
+
+### 10.4 Warm / KV-reuse arm (truncated: 3.8 k conversation, 1.2 k follow-up)
+
+| metric | value | honest reading |
+|---|---|---|
+| turn-1 "cold" TTFT | 0.036 s | **not cold** — one slot, and it still held the identical 3,830-token prompt processed seconds earlier in `N_single/p3k`; slot snapshots show a full prompt-cache hit. A genuinely cold 3.8 k prefill costs ≈3.76 s (§10.3). |
+| follow-up TTFT (after two foreign chats) | 0.342 s | queue + partial prefill, 43 tokens generated before EOS, decode 33.8 tok/s |
+| follow-up quality | degenerate | the 2.4 B model answers the follow-up with an echoed numeric run-on (`0.0001 0.0002 0.0003 …`) rather than the requested restatement — qualitative, not a throughput result |
+
+The warm **mechanism** works (sub-second TTFT after interruption); the **model** does not do the task.
+
+### 10.5 Concurrency arms (1 k prompts, 128-token answers)
+
+| arm | ok | wall s | agg tok/s | per-req decode mean / p95 | TTFT mean / p95 |
+|---|---|---|---|---|---|
+| `N_load/load1k_c2` (c=2) | 2/2 | 9.1 | 28.2 | 39.1 / 39.0 | 3.62 / 1.42 |
+| `N_load/load1k_c4` (c=4) | 4/4 | 13.2 | 38.8 | 39.2 / 39.5 | 4.95 / 6.59 |
+
+One slot means requests serialize; per-request decode is unaffected (the i2_s kernels already use
+the full CPU), so the agg column mostly reflects prefill overlap — slot snapshots at 5 s intervals
+show prompt-cache reuse of 1,197–1,444 tokens, i.e. c=4 TTFTs are largely queue wait.
+
+### 10.6 Sustained 20 minutes (c=2, 1 k prompts, 128-token answers)
+
+| metric | value |
+|---|---|
+| duration / requests / errors | 1,208.6 s / 354 / 0 |
+| decode mean / p50 / p95 | 38.4 / 38.9 / 39.4 tok/s |
+| per-5-min buckets (decode mean) | 39.0 → 39.0 → 39.1 → **36.1** (last −7 %; TTFT mean 3.33 → 3.74 s) |
+| total answer tokens | ≈45.3 k |
+| BitNet process RSS peak | ≈2.3 GiB |
+
+**Telemetry honesty.** This box instruments GPU power (`nvidia-smi` at 1 Hz) only; **CPU power is
+not instrumented**, so no Wh or J/token figure is given for the BitNet arm. The GPU rows in
+`logs/telemetry/N.telem.csv` / `N_sust.telem.csv` (VRAM ≈23.7 GiB, up to 136 W, 70 °C, throttle
+`0x400`) belong to the **production brain serve, which stayed online during this post-deadline
+re-run** — the BitNet binary never touched the GPU. The last-bucket −7 % drop is unattributed:
+the arm shared the CPU with the live brain, and there is no CPU temperature/power channel.
+
+### 10.7 What the appendix buys
+
+It brackets the two CPU-only rows already in the report: stage C (§7 fourth column) got 6.1 tok/s
+decoding the 54.5 GB IQ3_S MoE from host RAM, while the ternary 2.4 B model on the same cores runs
+38–39 tok/s decode, ≈1.0–1.1 k tok/s CPU prefill, and holds that for 20 minutes with p50 ≈ p95.
+The gap is model memory traffic, not CPU weakness — and it is why "CPU-only" was never a viable
+deployment target for the IQ3_S brain on this box, independent of engine choice.

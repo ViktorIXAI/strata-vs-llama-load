@@ -92,10 +92,12 @@ verify2,w3_append_one_line,ok,ttft=4.225,reused=None,read=None
 verify2,w4_midflip_one_char,ok,ttft=11.415,reused=None,read=None
 verify2,w2_identical_repeat,ok,ttft=0.509,reused=None,read=None
 N,load_try,moe=None,kv8=False
-N_single,p1k,FAILED,<HTTPError 400: 'Bad Request'>
-N_single,p3k,FAILED,<HTTPError 400: 'Bad Request'>
-N_warm_warm,warm_turn1_cold,FAILED,<HTTPError 400: 'Bad Request'>
 C,load_try,moe=None,kv8=False
-C_single,p4k,ok,pp=5198,ttft=35.06,dec=7.4,D=[7.3, 7.4, 7.2, 7.6]
-C_single,p32k,FAILED,<HTTPError 400: 'Bad Request'>
-C_sust,sustained,ok,dur=919,req=80,dec_mean=6.1,dec_p95=6.2,maxT=53.0,thr=879
+N,load_try,moe=None,kv8=False
+N_single,p1k,ok,pp=1177,ttft=1.104,dec=39.2,D=[41.5, 40.0, 40.5, 41.0]
+N_single,p3k,ok,pp=3830,ttft=3.757,dec=33.4,D=[33.6, 33.1, 33.1, 33.6]
+N_warm_warm,warm_turn1_cold,ok,pp=3830,ttft=0.036,dec=33.6,D=[34.5, 33.2, 33.3, 33.3]
+N_warm,warm_followup,ok,cold_ttft=0.036,warm_ttft=0.342,reused=None,read=None
+N_load,load1k_c2,ok,c=2,agg=28.2,dec_mean=39.1,ttft_mean=3.62
+N_load,load1k_c4,ok,c=4,agg=38.8,dec_mean=39.2,ttft_mean=4.95
+N_sust,sustained,ok,dur=1209,req=354,dec_mean=38.4,dec_p95=39.4,maxT=70.0,thr=1152

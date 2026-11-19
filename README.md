@@ -4,7 +4,10 @@ Benchmark of **Basalt 0.4.1** (production brain), **Strata 0.1.62** (fork candid
 **llama.cpp b12531** (external reference) on the *same* model — Qwen3.8-Flash-Next at IQ3_S,
 a 54.5 GB GGUF on a 24 GB laptop GPU — using identical arms: context ladder, recall probes,
 warm/KV-reuse turn, concurrency waves, an adversarial verification of the "500× cached prefill"
-claim, and a 30-minute sustained load with 1 Hz power/thermal telemetry.
+claim, and a 30-minute sustained load with 1 Hz power/thermal telemetry. A CPU appendix
+([report §10](report.md)) additionally runs the **Microsoft BitNet engine** (llama.cpp fork v9918,
+i2_s kernels) on its own *BitNet b1.58-2B-4T* ~2.4 B ternary model — an engine-class reference
+explicitly **not** the same model, so its rows are never comparable to the IQ3_S columns.
 
 Full write-up: **[report.md](report.md)**. Raw rows: [`results/`](results/). Harness:
 [`harness/`](harness/). Serve logs + telemetry: [`logs/`](logs/).
@@ -58,16 +61,17 @@ still burned 70.83 Wh.
 ## What was cut by the 05:50 deadline
 
 llama.cpp concurrency at a context that fits 32 k, llama-side warm/500× verification, a repeated
-answer-agreement study (V5 was one trial), a Strata `reasoning_budget` sweep, and BitNet beyond one
-sustained arm. Failed arms are recorded verbatim rather than deleted:
-[report.md §8](report.md).
+answer-agreement study (V5 was one trial), a Strata `reasoning_budget` sweep, and the BitNet CPU
+ladder (completed post-deadline at 08:28 — [report §10](report.md)). Failed arms are recorded
+verbatim rather than deleted: [report.md §8](report.md).
 
 ## Reproduce
 
 ```bash
 # on the bench box
 bash driver.sh                 # parks the keep-up cron, restores the brain on ANY exit
-python3 harness/loadbench.py strata|basalt|llama1|llama2|verify500x|verify500x2
+python3 harness/loadbench.py strata|basalt|llama1|llama2|verify500x|verify500x2|bitnet|llamacpu
+python3 harness/loadbench.py llamaopt      # follow-on llama.cpp optimization series (OPT_* tags)
 ```
 Prompts are rebuilt deterministically (`harness/build_prompts.py`, seed 20261117) from a private
 docs tree + the llama.cpp checkout; only their sha256 manifest is published, so exact token counts

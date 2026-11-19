@@ -311,3 +311,15 @@ built p184k: target=155648 est=155719 markers=5
 2026-11-19_05:52:36 STAGE strata: already completed earlier, skipping
 2026-11-19_05:52:36 STRATA_RETRY rc=0
 2026-11-19_05:52:36 ALL_DONE
+2026-11-19_08:28:24 STAGE N: serve up np=1 ctx=4096
+2026-11-19_08:28:27 STAGE N: loaded in 3s (n-cpu-moe=None)
+2026-11-19_08:28:35 N_single/p1k: pp=1177 ttft=1.104s decode=39.2 quarters=[41.5, 40.0, 40.5, 41.0]
+2026-11-19_08:28:46 N_single/p3k: pp=3830 ttft=3.757s decode=33.4 quarters=[33.6, 33.1, 33.1, 33.6]
+2026-11-19_08:28:50 N_warm_warm/warm_turn1_cold: pp=3830 ttft=0.036s decode=33.6 quarters=[34.5, 33.2, 33.3, 33.3]
+2026-11-19_08:28:57 N_warm/warm: cold_ttft=0.036s warm_ttft=0.342s reused=None read=None
+2026-11-19_08:29:06 N_load/load1k_c2: c=2 ok=2/2 agg=28.2 tok/s dec_mean=39.1 ttft_mean=3.62s errors=[]
+2026-11-19_08:29:06 N_load/load1k_c2 KV: "<HTTPError 501: 'Not Implemented'>"
+2026-11-19_08:29:19 N_load/load1k_c4: c=4 ok=4/4 agg=38.8 tok/s dec_mean=39.2 ttft_mean=4.95s errors=[]
+2026-11-19_08:29:19 N_load/load1k_c4 KV: "<HTTPError 501: 'Not Implemented'>"
+2026-11-19_08:49:28 N_sust/sustained: 1209s done req=354 err=0 dec_mean=38.4 p95=39.4 max_temp=70.0C throttled=1152
+2026-11-19_08:52:33 STAGE N: done
