@@ -1,5 +1,7 @@
 # Three engines, one RTX 5090 Laptop, one IQ3_S MoE — measured on identical arms
 
+See [llama-optimized.md](llama-optimized.md) for the re-test with MoE-cache optimization (2026-11-20).
+
 Run date: 2026-11-19, 00:16–05:53 CET, single box, detached driver. Driver deadline 05:50;
 arms that did not finish before it are listed in §8 as missing, not silently dropped.
 The BitNet CPU ladder was re-run after the deadline at 08:28–08:52 and is published as the
