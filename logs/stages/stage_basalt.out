@@ -1,0 +1,32 @@
+00:12:26 STAGE basalt: serve up (production brain v0.4.1, config as-is on port 18084)
+00:12:32 STAGE basalt: loaded in 6s alias=qwen3.8-flash-next-iq3_s-basalt
+00:12:54 B_single/p4k: pp=5198 ttft=4.643s decode=371.8 quarters=[145.9, 198.2, 188.1, 220.0]
+00:13:08 B_single/p32k: pp=39228 ttft=11.538s decode=345.8 quarters=[124.5, 205.9, 195.7, 185.2]
+00:13:35 B_single/p64k_code recall: 5/5 exact
+00:13:35 B_single/p64k_code: pp=74962 ttft=22.04s decode=270.6 quarters=[139.3, 143.9, 117.5, 137.8]
+00:14:22 B_single/p128k recall: 5/5 exact
+00:14:22 B_single/p128k: pp=152589 ttft=42.192s decode=261.2 quarters=[193.1, 132.8, 98.7, 117.8]
+00:14:22 B_single/p184k: FAILED <HTTPError 400: 'Bad Request'>
+00:14:37 B_warm_warm/warm_turn1_cold: pp=50125 ttft=14.705s decode=228.2 quarters=[116.0, 114.9, 101.0, 105.4]
+00:14:43 B_warm/warm: cold_ttft=14.705s warm_ttft=1.273s reused=None read=None
+00:15:07 B_load/load32k_c2: c=2 ok=2/2 agg=21.5 tok/s dec_mean=319.9 ttft_mean=17.04s errors=[]
+00:15:24 B_load/load32k_c4: c=4 ok=4/4 agg=58.5 tok/s dec_mean=337.7 ttft_mean=6.16s errors=[]
+00:15:39 B_load/load32k_c8: c=8 ok=8/8 agg=136.4 tok/s dec_mean=326.6 ttft_mean=7.86s errors=[]
+00:20:15 STAGE basalt: serve up (production brain v0.4.1, config as-is on port 18084)
+00:20:21 STAGE basalt: loaded in 6s alias=qwen3.8-flash-next-iq3_s-basalt
+00:21:01 B_single/p4k: pp=5198 ttft=6.104s decode=352.1 quarters=[124.4, 190.7, 228.5, 187.9]
+00:21:07 B_single/p32k: pp=39228 ttft=4.963s decode=352.1 quarters=[155.3, 177.5, 193.9, 173.8]
+00:21:20 B_single/p64k_code recall: 5/5 exact
+00:21:20 B_single/p64k_code: pp=74962 ttft=4.868s decode=287.6 quarters=[185.9, 146.6, 127.8, 123.4]
+00:21:32 B_single/p128k recall: 5/5 exact
+00:21:32 B_single/p128k: pp=152589 ttft=4.973s decode=292.1 quarters=[181.5, 123.8, 108.0, 193.7]
+00:21:36 B_single/p184k: FAILED <HTTPError 400: 'Bad Request'>
+00:21:53 B_warm_warm/warm_turn1_cold: pp=50125 ttft=16.529s decode=None quarters=[163.5, 184.3, 111.3, 251.2]
+00:22:07 B_warm/warm: cold_ttft=16.529s warm_ttft=4.394s reused=None read=None
+00:22:24 B_load/load32k_c2: c=2 ok=2/2 agg=31.0 tok/s dec_mean=322.8 ttft_mean=9.82s errors=[]
+00:22:44 B_load/load32k_c4: c=4 ok=4/4 agg=51.0 tok/s dec_mean=336.7 ttft_mean=11.37s errors=[]
+00:23:04 B_load/load32k_c8: c=8 ok=8/8 agg=101.6 tok/s dec_mean=321.4 ttft_mean=11.79s errors=[]
+00:45:43 B_sust/sustained: 1803s done req=538 err=1859328 dec_mean=356.7 p95=382.3 max_temp=74.0C throttled=1733
+00:48:48 STAGE basalt: done
+00:53:07 B_sust/sustained: 1803s done req=829 err=0 dec_mean=359.8 p95=382.5 max_temp=74.0C throttled=1742
+00:53:13 STAGE basalt: done

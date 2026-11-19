@@ -1,0 +1,175 @@
+{
+ "p4k": {
+  "path": "$HOME/bench-load/prompts/p4k.txt",
+  "target_tokens": 4096,
+  "est_tokens": 4155,
+  "kind": "chat",
+  "salt": 0,
+  "seed": 20261118,
+  "markers": [],
+  "sha256": "bc93aa98de118ded97093d01c28febbad5b8cf732338a6cdc891ee50df3b7c8f"
+ },
+ "p4k_a": {
+  "path": "$HOME/bench-load/prompts/p4k_a.txt",
+  "target_tokens": 4096,
+  "est_tokens": 4156,
+  "kind": "chat",
+  "salt": 11,
+  "seed": 20261118,
+  "markers": [],
+  "sha256": "61d2884a0e7c5b56ed74ffaab7cec43820527fec638950092936d0fe0f6398cb"
+ },
+ "p4k_f1": {
+  "path": "$HOME/bench-load/prompts/p4k_f1.txt",
+  "target_tokens": 2000,
+  "est_tokens": 2059,
+  "kind": "chat",
+  "salt": 7,
+  "seed": 20261118,
+  "markers": [],
+  "sha256": "4ba2f27c76fed39e43f9e59dbd1d0dabcaa01ab272280882d1c915a452759423"
+ },
+ "p32k": {
+  "path": "$HOME/bench-load/prompts/p32k.txt",
+  "target_tokens": 32768,
+  "est_tokens": 32827,
+  "kind": "chat",
+  "salt": 1,
+  "seed": 20261118,
+  "markers": [],
+  "sha256": "534d2212e460994e574d082bf5976baa9b1d2b682f84f976baeaab144ac46259"
+ },
+ "p32k_a": {
+  "path": "$HOME/bench-load/prompts/p32k_a.txt",
+  "target_tokens": 32768,
+  "est_tokens": 32828,
+  "kind": "chat",
+  "salt": 21,
+  "seed": 20261118,
+  "markers": [],
+  "sha256": "7715e8c8cbff4e4459f051f379b677a31c1245897547cbbfadeac78f11d2e285"
+ },
+ "p32k_b": {
+  "path": "$HOME/bench-load/prompts/p32k_b.txt",
+  "target_tokens": 32768,
+  "est_tokens": 32827,
+  "kind": "chat",
+  "salt": 22,
+  "seed": 20261118,
+  "markers": [],
+  "sha256": "23d1905dcfdff443584ee53a9e8bf8d406d3bad4cd8da5fb6ecff5ba650a13c2"
+ },
+ "p32k_c": {
+  "path": "$HOME/bench-load/prompts/p32k_c.txt",
+  "target_tokens": 32768,
+  "est_tokens": 32828,
+  "kind": "chat",
+  "salt": 23,
+  "seed": 20261118,
+  "markers": [],
+  "sha256": "23de9d4e84d85cfb31cef3d9e286ccb90471f1196b816771f1513452f881e284"
+ },
+ "p40k": {
+  "path": "$HOME/bench-load/prompts/p40k.txt",
+  "target_tokens": 40960,
+  "est_tokens": 41020,
+  "kind": "chat",
+  "salt": 3,
+  "seed": 20261118,
+  "markers": [],
+  "sha256": "4b58371a7c3c22baa3d41685ff340beb49518fc5d00d37ae0702208905b75aec"
+ },
+ "p128k": {
+  "path": "$HOME/bench-load/prompts/p128k.txt",
+  "target_tokens": 131072,
+  "est_tokens": 131143,
+  "kind": "json",
+  "salt": 4,
+  "seed": 20261118,
+  "markers": [
+   {
+    "id": "ORCHARD-ORCHARD-8056",
+    "value": "595.62"
+   },
+   {
+    "id": "COPPER-VESSEL-4335",
+    "value": "631.79"
+   },
+   {
+    "id": "LANTERN-ORCHARD-3823",
+    "value": "562.14"
+   },
+   {
+    "id": "ORCHARD-MERIDIAN-3847",
+    "value": "843.61"
+   },
+   {
+    "id": "ORCHARD-VESSEL-9415",
+    "value": "458.75"
+   }
+  ],
+  "sha256": "058b6176c4ffdb079594c530a2e9093c8ae188fc8a967f78b29279a9a91bdf82"
+ },
+ "p64k_code": {
+  "path": "$HOME/bench-load/prompts/p64k_code.txt",
+  "target_tokens": 65536,
+  "est_tokens": 65577,
+  "kind": "code",
+  "salt": 6,
+  "seed": 20261118,
+  "markers": [
+   {
+    "id": "OBSIDIAN-AZURE-3864",
+    "value": "417.44"
+   },
+   {
+    "id": "MERIDIAN-HARVESTER-9904",
+    "value": "472.26"
+   },
+   {
+    "id": "HARVESTER-ORCHARD-9787",
+    "value": "535.66"
+   },
+   {
+    "id": "BEACON-BEACON-3464",
+    "value": "867.64"
+   },
+   {
+    "id": "MERIDIAN-OBSIDIAN-5411",
+    "value": "675.66"
+   }
+  ],
+  "sha256": "8c20f3ca844115de763ee8213456c3f8710964fc32cd5fbc254425b3084a1656"
+ },
+ "p184k": {
+  "path": "$HOME/bench-load/prompts/p184k.txt",
+  "target_tokens": 155648,
+  "est_tokens": 155719,
+  "kind": "json",
+  "salt": 5,
+  "seed": 20261118,
+  "markers": [
+   {
+    "id": "QUARRY-MERIDIAN-3319",
+    "value": "188.53"
+   },
+   {
+    "id": "THICKET-ORCHARD-3903",
+    "value": "305.55"
+   },
+   {
+    "id": "OBSIDIAN-THICKET-1929",
+    "value": "279.28"
+   },
+   {
+    "id": "QUARRY-VESSEL-2728",
+    "value": "531.30"
+   },
+   {
+    "id": "VESSEL-OBSIDIAN-3330",
+    "value": "757.22"
+   }
+  ],
+  "sha256": "c658fc8ff97d6fc2aaf5f859e2fc9f7d16ee048e1abb390f803cb72ca92e4c51"
+ }
+}

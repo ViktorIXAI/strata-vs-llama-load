@@ -1,0 +1,48 @@
+00:01:34 STAGE strata: serve up
+00:05:16 STRATA_START_FAILED rc=1 tail=rompt path allocates its own buffers (too few cache slots to borrow)
+strata: prompt kernels: chunks of 3072 tokens or more run 48 of 48 layers on the fused kernels; shorter chunks run 48 on the staged
+00:06:33 STAGE strata: serve up
+00:08:28 STAGE strata: serve up
+00:12:25 STRATA_START_FAILED rc=1 tail=rompt path allocates its own buffers (too few cache slots to borrow)
+strata: prompt kernels: chunks of 3072 tokens or more run 48 of 48 layers on the fused kernels; shorter chunks run 48 on the staged
+00:16:15 STAGE strata: serve up
+00:20:15 STRATA_START_FAILED rc=1 tail=rompt path allocates its own buffers (too few cache slots to borrow)
+strata: prompt kernels: chunks of 3072 tokens or more run 48 of 48 layers on the fused kernels; shorter chunks run 48 on the staged
+01:52:15 STAGE strata: probing serve configs (0.2.16 terminal readiness)
+01:53:54 STAGE strata: loaded in 99s config=v1_profile_ctx196k
+01:53:54 STAGE strata: arms with config v1_profile_ctx196k
+01:54:01 S_single/p4k: pp=0 ttft=Nones decode=76.5 quarters=[None, None, None, None]
+01:54:16 S_single/p32k: pp=0 ttft=Nones decode=33.4 quarters=[None, None, None, None]
+01:54:47 S_single/p64k_code recall: 0/5 exact
+01:54:47 S_single/p64k_code: pp=0 ttft=Nones decode=19.6 quarters=[None, None, None, None]
+01:55:40 S_single/p128k recall: 0/5 exact
+01:55:40 S_single/p128k: pp=0 ttft=Nones decode=5.3 quarters=[None, None, None, None]
+01:56:39 S_single/p184k: pp=0 ttft=Nones decode=4.3 quarters=[None, None, None, None]
+01:56:55 S_warm_warm/warm_turn1_cold: pp=0 ttft=Nones decode=8.1 quarters=[None, None, None, None]
+01:57:04 S_warm/warm: cold_ttft=Nones warm_ttft=Nones reused=None read=None
+01:57:31 S_load/load32k_c2: c=2 ok=2/2 agg=18.9 tok/s dec_mean=14.2 ttft_mean=Nones errors=[]
+01:57:31 S_load/load32k_c2 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+01:57:50 S_load/load32k_c4: c=4 ok=4/4 agg=53.0 tok/s dec_mean=68.0 ttft_mean=Nones errors=[]
+01:57:50 S_load/load32k_c4 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+01:58:06 S_load/load32k_c8: c=8 ok=8/8 agg=129.4 tok/s dec_mean=42.5 ttft_mean=Nones errors=[]
+01:58:06 S_load/load32k_c8 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+02:12:07 STAGE strata: probing serve configs (0.2.16 terminal readiness)
+02:13:49 STAGE strata: loaded in 102s config=v1_profile_ctx196k
+02:13:49 STAGE strata: arms with config v1_profile_ctx196k
+02:13:57 S_single/p4k: pp=None ttft=4.799s decode=230.9 quarters=[None, None, None, None]
+02:14:13 S_single/p32k: pp=None ttft=13.707s decode=248.8 quarters=[None, None, None, None]
+02:14:42 S_single/p64k_code recall: 5/5 exact
+02:14:42 S_single/p64k_code: pp=None ttft=23.744s decode=221.9 quarters=[None, None, None, None]
+02:15:34 S_single/p128k recall: 5/5 exact
+02:15:34 S_single/p128k: pp=None ttft=47.646s decode=240.7 quarters=[None, None, None, None]
+02:16:33 S_single/p184k: pp=None ttft=58.312s decode=273.4 quarters=[None, None, None, None]
+02:16:49 S_warm_warm/warm_turn1_cold: pp=None ttft=15.718s decode=None quarters=[None, None, None, None]
+02:16:57 S_warm/warm: cold_ttft=15.718s warm_ttft=1.433s reused=None read=None
+02:17:25 S_load/load32k_c2: c=2 ok=2/2 agg=18.8 tok/s dec_mean=280.8 ttft_mean=19.66s errors=[]
+02:17:25 S_load/load32k_c2 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+02:17:45 S_load/load32k_c4: c=4 ok=4/4 agg=51.2 tok/s dec_mean=291.8 ttft_mean=7.36s errors=[]
+02:17:45 S_load/load32k_c4 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+02:18:01 S_load/load32k_c8: c=8 ok=8/8 agg=126.5 tok/s dec_mean=313.2 ttft_mean=8.55s errors=[]
+02:18:01 S_load/load32k_c8 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+02:48:03 S_sust/sustained: 1802s done req=1285 err=0 dec_mean=314.3 p95=347.2 max_temp=76.0C throttled=2883
+02:48:08 STAGE strata: done

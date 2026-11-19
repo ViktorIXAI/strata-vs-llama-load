@@ -1,0 +1,18 @@
+03:50:32 STAGE verify500x: adversarial KV/prefill validation
+03:53:05 STAGE verify500x: loaded in 153s
+03:53:19 V/v1_cold_unique_32k: ttft=12.374s reused=None read=None sha=97f65a18162d
+03:53:20 V/v2_repeat_same_32k: ttft=0.045s reused=None read=None sha=97f65a18162d
+03:53:20 V/cold_vs_cached: 12.374s -> 0.045s = 275x
+03:53:32 V/v3_append_salt_32k: ttft=11.275s reused=None read=None sha=4c018b9025a5
+03:53:45 V/v4a_first: ttft=11.855s reused=None read=None sha=2528bf92405e
+03:53:57 V/v4b_intruder0: ttft=11.617s reused=None read=None sha=e45c58b05bc2
+03:54:10 V/v4b_intruder1: ttft=11.552s reused=None read=None sha=acc203812552
+03:54:22 V/v4b_intruder2: ttft=11.463s reused=None read=None sha=398330e483bb
+03:54:34 V/v4b_intruder3: ttft=11.47s reused=None read=None sha=77e638c16449
+03:54:36 V/v4c_requery_after_pressure: ttft=0.835s reused=None read=None sha=2528bf92405e
+03:54:42 V/v5a_answer_cold: ttft=4.18s reused=None read=None sha=e59ae52c7265
+03:54:44 V/v5b_answer_cached: ttft=0.048s reused=None read=None sha=e59ae52c7265
+03:54:44 V/answer_identical_cold_vs_cached=False len=974/953
+03:55:38 V/v6_unique_prompts_c4: c=4 ok=4/4 agg=19.0 tok/s dec_mean=141.2 ttft_mean=32.13s errors=[]
+03:55:38 V/v6_unique_prompts_c4 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+03:55:43 STAGE verify500x: done

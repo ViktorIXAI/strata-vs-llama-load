@@ -1,0 +1,13 @@
+0.00.183.325 I srv  llama_server: initializing ...
+0.00.183.337 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.183.639 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.185.976 I srv    load_model: loading model '<model-store>/IQ3_S/Qwen3.8-Flash-Next-GSQ-RCO-IQ3_S.gguf'
+0.00.474.535 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 99, abort
+0.01.171.779 E ggml_backend_cuda_buffer_type_alloc_buffer: allocating 51945.51 MiB on device 0: cudaMalloc failed: out of memory
+0.01.171.787 E ggml_backend_buft_alloc_buffer_n_default: failed to allocate CUDA0 buffer of size 54468812928
+0.01.391.251 E llama_model_load: error loading model: unable to allocate CUDA0 buffer
+0.01.391.258 E llama_model_load_from_file_impl: failed to load model
+0.01.391.266 E cmn  common_init_: failed to load model '<model-store>/IQ3_S/Qwen3.8-Flash-Next-GSQ-RCO-IQ3_S.gguf'
+0.01.391.271 E srv    load_model: failed to load model, '<model-store>/IQ3_S/Qwen3.8-Flash-Next-GSQ-RCO-IQ3_S.gguf'
+0.01.391.274 I srv    operator(): operator(): cleaning up before exit...
+0.01.392.245 E srv  server_run_i: exiting due to model loading error

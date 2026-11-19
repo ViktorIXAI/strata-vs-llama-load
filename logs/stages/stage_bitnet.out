@@ -1,0 +1,24 @@
+05:34:39 STAGE N: serve up np=4 ctx=4096
+05:34:42 STAGE N: loaded in 3s (n-cpu-moe=None)
+05:34:42 N_single/p1k: FAILED <HTTPError 400: 'Bad Request'>
+05:34:42 N_single/p3k: FAILED <HTTPError 400: 'Bad Request'>
+05:34:42 N_warm_warm/warm_turn1_cold: FAILED <HTTPError 400: 'Bad Request'>
+05:34:42 N_warm_warm foreign chats failed: <HTTPError 400: 'Bad Request'>
+Traceback (most recent call last):
+  File "$HOME/bench-load/loadbench.py", line 1033, in <module>
+    main()
+  File "$HOME/bench-load/loadbench.py", line 1027, in main
+    stage_bitnet()
+  File "$HOME/bench-load/loadbench.py", line 973, in stage_bitnet
+    stage_llama(4, 4096, port, "N", [lambda e, l, t: armsn(e, l, t)],
+  File "$HOME/bench-load/loadbench.py", line 758, in stage_llama
+    a(eng, logfile or "", tag)
+  File "$HOME/bench-load/loadbench.py", line 973, in <lambda>
+    stage_llama(4, 4096, port, "N", [lambda e, l, t: armsn(e, l, t)],
+                                                     ^^^^^^^^^^^^^^
+  File "$HOME/bench-load/loadbench.py", line 966, in armsn
+    warm_arm(eng, logfile, tag + "_warm", pf("p3k"), pf("p1k"))
+  File "$HOME/bench-load/loadbench.py", line 445, in warm_arm
+    "followup_ttft": r.get("ttft_s"), "followup_decode": r.get("decode_tok_s"),
+                     ^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'

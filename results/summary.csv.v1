@@ -1,0 +1,5 @@
+strata,serve,START_FAILED,1
+L1,load_try,moe=None,kv8=True
+L1,load_try,moe=None,kv8=False
+L1,load_try,moe=12,kv8=False
+L1,load_try,moe=24,kv8=False

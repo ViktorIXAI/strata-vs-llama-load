@@ -1,0 +1,101 @@
+strata,serve,START_FAILED,1
+B_single,p4k,ok,pp=5198,ttft=6.104,dec=352.1,D=[124.4, 190.7, 228.5, 187.9]
+B_single,p32k,ok,pp=39228,ttft=4.963,dec=352.1,D=[155.3, 177.5, 193.9, 173.8]
+B_single,p64k_code,ok,pp=74962,ttft=4.868,dec=287.6,D=[185.9, 146.6, 127.8, 123.4]
+B_single,p128k,ok,pp=152589,ttft=4.973,dec=292.1,D=[181.5, 123.8, 108.0, 193.7]
+B_single,p184k,FAILED,<HTTPError 400: 'Bad Request'>
+B_warm_warm,warm_turn1_cold,ok,pp=50125,ttft=16.529,dec=None,D=[163.5, 184.3, 111.3, 251.2]
+B_warm,warm_followup,ok,cold_ttft=16.529,warm_ttft=4.394,reused=None,read=None
+B_load,load32k_c2,ok,c=2,agg=31.0,dec_mean=322.8,ttft_mean=9.82
+B_load,load32k_c4,ok,c=4,agg=51.0,dec_mean=336.7,ttft_mean=11.37
+B_load,load32k_c8,ok,c=8,agg=101.6,dec_mean=321.4,ttft_mean=11.79
+B_sust,sustained,ok,dur=1803,req=829,dec_mean=359.8,dec_p95=382.5,maxT=74.0,thr=1742
+L1,load_try,moe=None,kv8=True
+L1,load_try,moe=None,kv8=False
+L1,load_try,moe=12,kv8=False
+L1,load_try,moe=24,kv8=False
+L1,load_try,moe=48,kv8=False
+L1,serve,LOAD_FAILED,error: invalid argument: --fa
+
+L2,load_try,moe=None,kv8=True
+L2,load_try,moe=None,kv8=False
+L2,load_try,moe=12,kv8=False
+L2,load_try,moe=24,kv8=False
+L2,load_try,moe=48,kv8=False
+L2,serve,LOAD_FAILED,error: invalid argument: --fa
+
+strata,cfg_try,v1_profile_ctx196k
+strata,cfg_try,v1_profile_ctx196k
+strata,cfg_try,v1_profile_ctx196k
+S_single,p4k,ok,pp=None,ttft=4.799,dec=230.9,D=[None, None, None, None]
+S_single,p32k,ok,pp=None,ttft=13.707,dec=248.8,D=[None, None, None, None]
+S_single,p64k_code,ok,pp=None,ttft=23.744,dec=221.9,D=[None, None, None, None]
+S_single,p128k,ok,pp=None,ttft=47.646,dec=240.7,D=[None, None, None, None]
+S_single,p184k,ok,pp=None,ttft=58.312,dec=273.4,D=[None, None, None, None]
+S_warm_warm,warm_turn1_cold,ok,pp=None,ttft=15.718,dec=None,D=[None, None, None, None]
+S_warm,warm_followup,ok,cold_ttft=15.718,warm_ttft=1.433,reused=None,read=None
+S_load,load32k_c2,ok,c=2,agg=18.8,dec_mean=280.8,ttft_mean=19.66
+S_load,load32k_c4,ok,c=4,agg=51.2,dec_mean=291.8,ttft_mean=7.36
+S_load,load32k_c8,ok,c=8,agg=126.5,dec_mean=313.2,ttft_mean=8.55
+S_sust,sustained,ok,dur=1802,req=1285,dec_mean=314.3,dec_p95=347.2,maxT=76.0,thr=2883
+L1,load_try,moe=None,kv8=True
+L1,load_try,moe=None,kv8=False
+L1,load_try,moe=12,kv8=False
+L1,load_try,moe=24,kv8=False
+L1,load_try,moe=48,kv8=False
+L1,load_try,moe=None,kv8=True
+L1,load_try,moe=None,kv8=False
+L1,load_try,moe=12,kv8=False
+L1,load_try,moe=24,kv8=False
+L1,load_try,moe=48,kv8=False
+L1_single,p4k,ok,pp=5198,ttft=30.737,dec=29.4,D=[28.6, 29.8, 30.7, 28.7]
+L1_single,p32k,ok,pp=39228,ttft=229.265,dec=29.1,D=[28.3, 29.3, 28.7, 30.0]
+L1_single,p64k_code,ok,pp=71166,ttft=434.921,dec=27.9,D=[27.0, 27.9, 28.9, 27.6]
+L1_single,p128k,ok,pp=172674,ttft=1042.64,dec=28.2,D=[29.7, 27.1, 28.0, 28.2]
+verify,v1_cold_unique_32k,ok,ttft=12.374,reused=None,read=None
+verify,v2_repeat_same_32k,ok,ttft=0.045,reused=None,read=None
+verify,cold_vs_cached,ok,cold=12.374,cached=0.045,x=275
+verify,v3_append_salt_32k,ok,ttft=11.275,reused=None,read=None
+verify,v4a_first,ok,ttft=11.855,reused=None,read=None
+verify,v4b_intruder0,ok,ttft=11.617,reused=None,read=None
+verify,v4b_intruder1,ok,ttft=11.552,reused=None,read=None
+verify,v4b_intruder2,ok,ttft=11.463,reused=None,read=None
+verify,v4b_intruder3,ok,ttft=11.47,reused=None,read=None
+verify,v4c_requery_after_pressure,ok,ttft=0.835,reused=None,read=None
+verify,v5a_answer_cold,ok,ttft=4.18,reused=None,read=None
+verify,v5b_answer_cached,ok,ttft=0.048,reused=None,read=None
+verify,correctness,DIFFERS,len=974/953
+V,v6_unique_prompts_c4,ok,c=4,agg=19.0,dec_mean=141.2,ttft_mean=32.13
+L1,load_try,moe=None,kv8=True
+L1,load_try,moe=None,kv8=False
+L1,load_try,moe=12,kv8=False
+L1,load_try,moe=24,kv8=False
+L1,load_try,moe=48,kv8=False
+L1_single,p4k,ok,pp=5198,ttft=29.647,dec=28.8,D=[29.6, 29.5, 27.2, 29.1]
+L1_single,p32k,ok,pp=39228,ttft=232.473,dec=30.3,D=[31.2, 30.0, 29.5, 30.4]
+L1_single,p64k_code,ok,pp=71166,ttft=434.538,dec=27.4,D=[27.5, 27.7, 27.2, 27.0]
+L1_single,p128k,ok,pp=172674,ttft=1045.299,dec=27.5,D=[26.5, 27.6, 27.4, 28.7]
+L1_single,p184k,ok,pp=184098,ttft=1125.666,dec=25.6,D=[27.6, 25.7, 27.0, 22.8]
+L1_warm_warm,warm_turn1_cold,ok,pp=50125,ttft=283.68,dec=26.2,D=[21.9, 28.3, 27.4, 28.5]
+L1_warm,warm_followup,ok,cold_ttft=283.68,warm_ttft=1.633,reused=None,read=None
+L2,load_try,moe=None,kv8=True
+L2,load_try,moe=None,kv8=False
+L2,load_try,moe=12,kv8=False
+L2,load_try,moe=24,kv8=False
+L2,load_try,moe=48,kv8=False
+L2_load,load32k_c2,ok,c=2,agg=0.0,dec_mean=None,ttft_mean=None
+L2_load,load32k_c4,ok,c=4,agg=0.0,dec_mean=None,ttft_mean=None
+L2_load,load32k_c8,ok,c=8,agg=0.0,dec_mean=None,ttft_mean=None
+L2_sust,sustained,ok,dur=1804,req=264,dec_mean=14.8,dec_p95=14.9,maxT=77.0,thr=1742
+verify2,w1_cold_original_32k,ok,ttft=12.679,reused=None,read=None
+verify2,w3_append_one_line,ok,ttft=4.225,reused=None,read=None
+verify2,w4_midflip_one_char,ok,ttft=11.415,reused=None,read=None
+verify2,w2_identical_repeat,ok,ttft=0.509,reused=None,read=None
+N,load_try,moe=None,kv8=False
+N_single,p1k,FAILED,<HTTPError 400: 'Bad Request'>
+N_single,p3k,FAILED,<HTTPError 400: 'Bad Request'>
+N_warm_warm,warm_turn1_cold,FAILED,<HTTPError 400: 'Bad Request'>
+C,load_try,moe=None,kv8=False
+C_single,p4k,ok,pp=5198,ttft=35.06,dec=7.4,D=[7.3, 7.4, 7.2, 7.6]
+C_single,p32k,FAILED,<HTTPError 400: 'Bad Request'>
+C_sust,sustained,ok,dur=919,req=80,dec_mean=6.1,dec_p95=6.2,maxT=53.0,thr=879

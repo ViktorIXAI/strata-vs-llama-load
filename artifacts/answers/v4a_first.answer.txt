@@ -1,0 +1,7 @@
+We need answer user's question. Need use only dump. Need compare how project stores attention state and what it says about decoding cost when that state does not fit GPU. Quote exact numbers dump gives, list conditions, explain tradeoff.
+
+Need parse dump. Relevant sections:
+- configuration/index.md Context and KV cache
+
+I have thought about this long enough; time to give my answer.
+Basalt stores attention state in model-specific KV caches, and it says that when that state cannot all live on the GPU, decode becomes bus-bound and slows down sharply. The dump gives three main cases: DeepSeek’s compact FP

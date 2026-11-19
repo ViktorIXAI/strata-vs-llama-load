@@ -1,0 +1,10 @@
+We need answer user's question. Need use only dump. Need compare how project stores attention state and what it says about decoding cost when that state does not fit GPU. Quote exact numbers dump gives, list conditions, explain tradeoff.
+
+Need parse dump. Relevant sections:
+- Configuration Context and KV cache: max
+
+I have thought about this long enough; time to give my answer.
+Basalt stores attention state in a KV cache, but the details differ by model. The dump gives these exact storage formats and sizes:
+
+| Model | Attention-state storage | Exact numbers from the dump |
+|---|---

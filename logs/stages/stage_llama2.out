@@ -1,0 +1,22 @@
+00:53:47 STAGE L2: serve up np=8 ctx=270336
+00:53:50 L2: load failed n-cpu-moe=None, trying next variant
+00:53:56 L2: load failed n-cpu-moe=None, trying next variant
+00:54:02 L2: load failed n-cpu-moe=12, trying next variant
+00:54:08 L2: load failed n-cpu-moe=24, trying next variant
+00:54:18 L2: load failed n-cpu-moe=48, trying next variant
+00:54:21 L2_LOAD_FAILED tail=error: invalid argument: --fa
+
+04:52:07 STAGE L2: serve up np=8 ctx=270336
+04:52:19 L2: load failed n-cpu-moe=None, trying next variant
+04:52:25 L2: load failed n-cpu-moe=None, trying next variant
+04:52:31 L2: load failed n-cpu-moe=12, trying next variant
+04:52:37 L2: load failed n-cpu-moe=24, trying next variant
+04:52:44 STAGE L2: loaded in 3s (n-cpu-moe=48)
+04:52:44 L2_load/load32k_c2: c=2 ok=0/2 agg=0.0 tok/s dec_mean=None ttft_mean=Nones errors=["<HTTPError 400: 'Bad Request'>"]
+04:52:44 L2_load/load32k_c2 KV: "<HTTPError 501: 'Not Implemented'>"
+04:52:44 L2_load/load32k_c4: c=4 ok=0/4 agg=0.0 tok/s dec_mean=None ttft_mean=Nones errors=["<HTTPError 400: 'Bad Request'>"]
+04:52:44 L2_load/load32k_c4 KV: "<HTTPError 501: 'Not Implemented'>"
+04:52:44 L2_load/load32k_c8: c=8 ok=0/8 agg=0.0 tok/s dec_mean=None ttft_mean=Nones errors=["<HTTPError 400: 'Bad Request'>"]
+04:52:44 L2_load/load32k_c8 KV: "<HTTPError 501: 'Not Implemented'>"
+05:22:48 L2_sust/sustained: 1804s done req=264 err=263 dec_mean=14.8 p95=14.9 max_temp=77.0C throttled=1742
+05:22:53 STAGE L2: done

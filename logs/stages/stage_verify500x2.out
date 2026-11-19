@@ -1,0 +1,7 @@
+05:23:12 STAGE verify500x2: prefix-granularity reuse test
+05:24:46 STAGE verify500x2: loaded in 93s
+05:24:59 W/w1_cold_original_32k: ttft=12.679s reused=None read=None raw=None
+05:25:05 W/w3_append_one_line: ttft=4.225s reused=None read=None raw=None
+05:25:17 W/w4_midflip_one_char: ttft=11.415s reused=None read=None raw=None
+05:25:18 W/w2_identical_repeat: ttft=0.509s reused=None read=None raw=None
+05:25:24 STAGE verify500x2: done

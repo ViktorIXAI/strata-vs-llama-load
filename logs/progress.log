@@ -1,0 +1,313 @@
+2026-11-19_00:16:04 DRIVER_START stop_at=05:50
+2026-11-19_00:16:10 keep_up_parked stack_stopped vram_free=24075
+2026-11-19_00:16:14 llama_tag=b12528
+2026-11-19_00:16:15 llama_build_ok version: 1.0.0-dev (build 211, commit b04489040)
+built p4k: target=4096 est=4155 markers=0
+built p4k_a: target=4096 est=4156 markers=0
+built p4k_f1: target=2000 est=2059 markers=0
+built p32k: target=32768 est=32827 markers=0
+built p32k_a: target=32768 est=32828 markers=0
+built p32k_b: target=32768 est=32827 markers=0
+built p32k_c: target=32768 est=32828 markers=0
+built p40k: target=40960 est=41020 markers=0
+built p128k: target=131072 est=131905 markers=5
+built p64k_code: target=65536 est=65578 markers=5
+built p184k: target=188416 est=188487 markers=5
+2026-11-19_00:16:15 prompts_built
+2026-11-19_00:16:15 STAGE_START strata
+2026-11-19_00:16:15 STAGE strata: serve up
+2026-11-19_00:20:15 STRATA_START_FAILED rc=1 tail=rompt path allocates its own buffers (too few cache slots to borrow)
+strata: prompt kernels: chunks of 3072 tokens or more run 48 of 48 layers on the fused kernels; shorter chunks run 48 on the staged
+2026-11-19_00:20:15 STAGE_END strata rc=0
+2026-11-19_00:20:15 STAGE_START basalt
+2026-11-19_00:20:15 STAGE basalt: serve up (production brain v0.4.1, config as-is on port 18084)
+2026-11-19_00:20:21 STAGE basalt: loaded in 6s alias=qwen3.8-flash-next-iq3_s-basalt
+2026-11-19_00:21:01 B_single/p4k: pp=5198 ttft=6.104s decode=352.1 quarters=[124.4, 190.7, 228.5, 187.9]
+2026-11-19_00:21:07 B_single/p32k: pp=39228 ttft=4.963s decode=352.1 quarters=[155.3, 177.5, 193.9, 173.8]
+2026-11-19_00:21:20 B_single/p64k_code recall: 5/5 exact
+2026-11-19_00:21:20 B_single/p64k_code: pp=74962 ttft=4.868s decode=287.6 quarters=[185.9, 146.6, 127.8, 123.4]
+2026-11-19_00:21:32 B_single/p128k recall: 5/5 exact
+2026-11-19_00:21:32 B_single/p128k: pp=152589 ttft=4.973s decode=292.1 quarters=[181.5, 123.8, 108.0, 193.7]
+2026-11-19_00:21:36 B_single/p184k: FAILED <HTTPError 400: 'Bad Request'>
+2026-11-19_00:21:53 B_warm_warm/warm_turn1_cold: pp=50125 ttft=16.529s decode=None quarters=[163.5, 184.3, 111.3, 251.2]
+2026-11-19_00:22:07 B_warm/warm: cold_ttft=16.529s warm_ttft=4.394s reused=None read=None
+2026-11-19_00:22:24 B_load/load32k_c2: c=2 ok=2/2 agg=31.0 tok/s dec_mean=322.8 ttft_mean=9.82s errors=[]
+2026-11-19_00:22:44 B_load/load32k_c4: c=4 ok=4/4 agg=51.0 tok/s dec_mean=336.7 ttft_mean=11.37s errors=[]
+2026-11-19_00:23:04 B_load/load32k_c8: c=8 ok=8/8 agg=101.6 tok/s dec_mean=321.4 ttft_mean=11.79s errors=[]
+2026-11-19_00:45:43 B_sust/sustained: 1803s done req=538 err=1859328 dec_mean=356.7 p95=382.3 max_temp=74.0C throttled=1733
+2026-11-19_00:48:48 STAGE basalt: done
+2026-11-19_00:53:07 B_sust/sustained: 1803s done req=829 err=0 dec_mean=359.8 p95=382.5 max_temp=74.0C throttled=1742
+2026-11-19_00:53:13 STAGE basalt: done
+2026-11-19_00:53:13 STAGE_END basalt rc=0
+2026-11-19_00:53:13 STAGE_START llama1
+2026-11-19_00:53:13 STAGE L1: serve up np=1 ctx=198144
+2026-11-19_00:53:16 L1: load failed n-cpu-moe=None, trying next variant
+2026-11-19_00:53:22 L1: load failed n-cpu-moe=None, trying next variant
+2026-11-19_00:53:28 L1: load failed n-cpu-moe=12, trying next variant
+2026-11-19_00:53:34 L1: load failed n-cpu-moe=24, trying next variant
+2026-11-19_00:53:44 L1: load failed n-cpu-moe=48, trying next variant
+2026-11-19_00:53:47 L1_LOAD_FAILED tail=error: invalid argument: --fa
+
+2026-11-19_00:53:47 STAGE_END llama1 rc=0
+2026-11-19_00:53:47 STAGE_START llama2
+2026-11-19_00:53:47 STAGE L2: serve up np=8 ctx=270336
+2026-11-19_00:53:50 L2: load failed n-cpu-moe=None, trying next variant
+2026-11-19_00:53:56 L2: load failed n-cpu-moe=None, trying next variant
+2026-11-19_00:54:02 L2: load failed n-cpu-moe=12, trying next variant
+2026-11-19_00:54:08 L2: load failed n-cpu-moe=24, trying next variant
+2026-11-19_00:54:18 L2: load failed n-cpu-moe=48, trying next variant
+2026-11-19_00:54:21 L2_LOAD_FAILED tail=error: invalid argument: --fa
+
+2026-11-19_00:54:21 STAGE_END llama2 rc=0
+2026-11-19_00:54:21 STRATA_RETRY start
+2026-11-19_00:54:21 STAGE strata: probing serve configs (0.2.16 terminal readiness)
+2026-11-19_00:54:24 STAGE strata: config v1_profile_ctx196k failed rc=1 in 3s
+2026-11-19_00:54:27 STRATA_RETRY rc=1
+2026-11-19_00:54:27 ALL_DONE
+2026-11-19_00:54:27 BRAIN_RESTORE_ISSUED
+2026-11-19_01:51:45 DRIVER_START stop_at=05:50
+2026-11-19_01:51:51 keep_up_parked stack_stopped vram_free=24075
+2026-11-19_01:51:53 llama_tag=b12530
+2026-11-19_01:52:14 llama_build_ok version: 1.0.0-dev (build 213, commit b001d7bb2)
+built p4k: target=4096 est=4155 markers=0
+built p4k_a: target=4096 est=4156 markers=0
+built p4k_f1: target=2000 est=2059 markers=0
+built p32k: target=32768 est=32827 markers=0
+built p32k_a: target=32768 est=32828 markers=0
+built p32k_b: target=32768 est=32827 markers=0
+built p32k_c: target=32768 est=32828 markers=0
+built p40k: target=40960 est=41020 markers=0
+built p128k: target=131072 est=131905 markers=5
+built p64k_code: target=65536 est=65578 markers=5
+built p184k: target=155648 est=157142 markers=5
+2026-11-19_01:52:15 prompts_built
+2026-11-19_01:52:15 STAGE_START strata
+2026-11-19_01:52:15 STAGE strata: probing serve configs (0.2.16 terminal readiness)
+2026-11-19_01:53:54 STAGE strata: loaded in 99s config=v1_profile_ctx196k
+2026-11-19_01:53:54 STAGE strata: arms with config v1_profile_ctx196k
+2026-11-19_01:54:01 S_single/p4k: pp=0 ttft=Nones decode=76.5 quarters=[None, None, None, None]
+2026-11-19_01:54:16 S_single/p32k: pp=0 ttft=Nones decode=33.4 quarters=[None, None, None, None]
+2026-11-19_01:54:47 S_single/p64k_code recall: 0/5 exact
+2026-11-19_01:54:47 S_single/p64k_code: pp=0 ttft=Nones decode=19.6 quarters=[None, None, None, None]
+2026-11-19_01:55:40 S_single/p128k recall: 0/5 exact
+2026-11-19_01:55:40 S_single/p128k: pp=0 ttft=Nones decode=5.3 quarters=[None, None, None, None]
+2026-11-19_01:56:39 S_single/p184k: pp=0 ttft=Nones decode=4.3 quarters=[None, None, None, None]
+2026-11-19_01:56:55 S_warm_warm/warm_turn1_cold: pp=0 ttft=Nones decode=8.1 quarters=[None, None, None, None]
+2026-11-19_01:57:04 S_warm/warm: cold_ttft=Nones warm_ttft=Nones reused=None read=None
+2026-11-19_01:57:31 S_load/load32k_c2: c=2 ok=2/2 agg=18.9 tok/s dec_mean=14.2 ttft_mean=Nones errors=[]
+2026-11-19_01:57:31 S_load/load32k_c2 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+2026-11-19_01:57:50 S_load/load32k_c4: c=4 ok=4/4 agg=53.0 tok/s dec_mean=68.0 ttft_mean=Nones errors=[]
+2026-11-19_01:57:50 S_load/load32k_c4 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+2026-11-19_01:58:06 S_load/load32k_c8: c=8 ok=8/8 agg=129.4 tok/s dec_mean=42.5 ttft_mean=Nones errors=[]
+2026-11-19_01:58:06 S_load/load32k_c8 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+2026-11-19_02:11:57 DRIVER_START stop_at=05:50
+2026-11-19_02:12:03 keep_up_parked stack_stopped vram_free=24075
+2026-11-19_02:12:06 llama_tag=b12530
+2026-11-19_02:12:07 llama_build_ok version: 1.0.0-dev (build 213, commit b001d7bb2)
+built p4k: target=4096 est=4155 markers=0
+built p4k_a: target=4096 est=4156 markers=0
+built p4k_f1: target=2000 est=2059 markers=0
+built p32k: target=32768 est=32827 markers=0
+built p32k_a: target=32768 est=32828 markers=0
+built p32k_b: target=32768 est=32827 markers=0
+built p32k_c: target=32768 est=32828 markers=0
+built p40k: target=40960 est=41020 markers=0
+built p128k: target=131072 est=131905 markers=5
+built p64k_code: target=65536 est=65578 markers=5
+built p184k: target=155648 est=157142 markers=5
+2026-11-19_02:12:07 prompts_built
+2026-11-19_02:12:07 STAGE_START strata
+2026-11-19_02:12:07 STAGE strata: probing serve configs (0.2.16 terminal readiness)
+2026-11-19_02:13:49 STAGE strata: loaded in 102s config=v1_profile_ctx196k
+2026-11-19_02:13:49 STAGE strata: arms with config v1_profile_ctx196k
+2026-11-19_02:13:57 S_single/p4k: pp=None ttft=4.799s decode=230.9 quarters=[None, None, None, None]
+2026-11-19_02:14:13 S_single/p32k: pp=None ttft=13.707s decode=248.8 quarters=[None, None, None, None]
+2026-11-19_02:14:42 S_single/p64k_code recall: 5/5 exact
+2026-11-19_02:14:42 S_single/p64k_code: pp=None ttft=23.744s decode=221.9 quarters=[None, None, None, None]
+2026-11-19_02:15:34 S_single/p128k recall: 5/5 exact
+2026-11-19_02:15:34 S_single/p128k: pp=None ttft=47.646s decode=240.7 quarters=[None, None, None, None]
+2026-11-19_02:16:33 S_single/p184k: pp=None ttft=58.312s decode=273.4 quarters=[None, None, None, None]
+2026-11-19_02:16:49 S_warm_warm/warm_turn1_cold: pp=None ttft=15.718s decode=None quarters=[None, None, None, None]
+2026-11-19_02:16:57 S_warm/warm: cold_ttft=15.718s warm_ttft=1.433s reused=None read=None
+2026-11-19_02:17:25 S_load/load32k_c2: c=2 ok=2/2 agg=18.8 tok/s dec_mean=280.8 ttft_mean=19.66s errors=[]
+2026-11-19_02:17:25 S_load/load32k_c2 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+2026-11-19_02:17:45 S_load/load32k_c4: c=4 ok=4/4 agg=51.2 tok/s dec_mean=291.8 ttft_mean=7.36s errors=[]
+2026-11-19_02:17:45 S_load/load32k_c4 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+2026-11-19_02:18:01 S_load/load32k_c8: c=8 ok=8/8 agg=126.5 tok/s dec_mean=313.2 ttft_mean=8.55s errors=[]
+2026-11-19_02:18:01 S_load/load32k_c8 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+2026-11-19_02:48:03 S_sust/sustained: 1802s done req=1285 err=0 dec_mean=314.3 p95=347.2 max_temp=76.0C throttled=2883
+2026-11-19_02:48:08 STAGE strata: done
+2026-11-19_02:48:08 STAGE_END strata rc=0
+2026-11-19_02:48:08 STAGE_START llama1
+2026-11-19_02:48:08 STAGE L1: serve up np=1 ctx=198144
+2026-11-19_02:49:05 L1: load failed n-cpu-moe=None, trying next variant
+2026-11-19_02:49:11 L1: load failed n-cpu-moe=None, trying next variant
+2026-11-19_02:49:18 L1: load failed n-cpu-moe=12, trying next variant
+2026-11-19_02:49:24 L1: load failed n-cpu-moe=24, trying next variant
+2026-11-19_02:49:33 STAGE L1: loaded in 6s (n-cpu-moe=48)
+2026-11-19_02:50:27 L1_single/p4k: pp=5198 ttft=Nones decode=10.7 quarters=[None, None, None, None]
+2026-11-19_02:54:36 L1_single/p32k: pp=39228 ttft=Nones decode=2.1 quarters=[None, None, None, None]
+2026-11-19_03:02:48 L1_single/p64k_code recall: 0/5 exact
+2026-11-19_03:02:48 L1_single/p64k_code: pp=74962 ttft=Nones decode=1.1 quarters=[None, None, None, None]
+2026-11-19_03:16:15 DRIVER_START stop_at=05:50
+2026-11-19_03:16:21 keep_up_parked stack_stopped vram_free=24075
+2026-11-19_03:16:23 llama_tag=b12531
+2026-11-19_03:16:52 llama_build_ok version: 1.0.0-dev (build 214, commit e4b620af1)
+built p4k: target=4096 est=4155 markers=0
+built p4k_a: target=4096 est=4156 markers=0
+built p4k_f1: target=2000 est=2059 markers=0
+built p32k: target=32768 est=32827 markers=0
+built p32k_a: target=32768 est=32828 markers=0
+built p32k_b: target=32768 est=32827 markers=0
+built p32k_c: target=32768 est=32828 markers=0
+built p40k: target=40960 est=41020 markers=0
+built p128k: target=131072 est=131143 markers=5
+built p64k_code: target=65536 est=65577 markers=5
+built p184k: target=155648 est=155719 markers=5
+2026-11-19_03:16:52 prompts_built
+2026-11-19_03:16:52 STAGE_START llama1
+2026-11-19_03:16:52 STAGE L1: serve up np=1 ctx=198144
+2026-11-19_03:16:55 L1: load failed n-cpu-moe=None, trying next variant
+2026-11-19_03:17:01 L1: load failed n-cpu-moe=None, trying next variant
+2026-11-19_03:17:08 L1: load failed n-cpu-moe=12, trying next variant
+2026-11-19_03:17:14 L1: load failed n-cpu-moe=24, trying next variant
+2026-11-19_03:17:20 STAGE L1: loaded in 3s (n-cpu-moe=48)
+2026-11-19_03:18:09 L1_single/p4k: pp=5198 ttft=30.737s decode=29.4 quarters=[28.6, 29.8, 30.7, 28.7]
+2026-11-19_03:22:16 L1_single/p32k: pp=39228 ttft=229.265s decode=29.1 quarters=[28.3, 29.3, 28.7, 30.0]
+2026-11-19_03:29:51 L1_single/p64k_code recall: 5/5 exact
+2026-11-19_03:29:51 L1_single/p64k_code: pp=71166 ttft=434.921s decode=27.9 quarters=[27.0, 27.9, 28.9, 27.6]
+2026-11-19_03:47:28 L1_single/p128k recall: 5/5 exact
+2026-11-19_03:47:28 L1_single/p128k: pp=172674 ttft=1042.64s decode=28.2 quarters=[29.7, 27.1, 28.0, 28.2]
+2026-11-19_03:50:22 DRIVER_START stop_at=05:50
+2026-11-19_03:50:28 keep_up_parked stack_stopped vram_free=24075
+2026-11-19_03:50:30 llama_tag=b12531
+2026-11-19_03:50:32 llama_build_ok version: 1.0.0-dev (build 214, commit e4b620af1)
+built p4k: target=4096 est=4155 markers=0
+built p4k_a: target=4096 est=4156 markers=0
+built p4k_f1: target=2000 est=2059 markers=0
+built p32k: target=32768 est=32827 markers=0
+built p32k_a: target=32768 est=32828 markers=0
+built p32k_b: target=32768 est=32827 markers=0
+built p32k_c: target=32768 est=32828 markers=0
+built p40k: target=40960 est=41020 markers=0
+built p128k: target=131072 est=131143 markers=5
+built p64k_code: target=65536 est=65577 markers=5
+built p184k: target=155648 est=155719 markers=5
+2026-11-19_03:50:32 prompts_built
+2026-11-19_03:50:32 STAGE_START verify500x
+2026-11-19_03:50:32 STAGE verify500x: adversarial KV/prefill validation
+2026-11-19_03:53:05 STAGE verify500x: loaded in 153s
+2026-11-19_03:53:19 V/v1_cold_unique_32k: ttft=12.374s reused=None read=None sha=97f65a18162d
+2026-11-19_03:53:20 V/v2_repeat_same_32k: ttft=0.045s reused=None read=None sha=97f65a18162d
+2026-11-19_03:53:20 V/cold_vs_cached: 12.374s -> 0.045s = 275x
+2026-11-19_03:53:32 V/v3_append_salt_32k: ttft=11.275s reused=None read=None sha=4c018b9025a5
+2026-11-19_03:53:45 V/v4a_first: ttft=11.855s reused=None read=None sha=2528bf92405e
+2026-11-19_03:53:57 V/v4b_intruder0: ttft=11.617s reused=None read=None sha=e45c58b05bc2
+2026-11-19_03:54:10 V/v4b_intruder1: ttft=11.552s reused=None read=None sha=acc203812552
+2026-11-19_03:54:22 V/v4b_intruder2: ttft=11.463s reused=None read=None sha=398330e483bb
+2026-11-19_03:54:34 V/v4b_intruder3: ttft=11.47s reused=None read=None sha=77e638c16449
+2026-11-19_03:54:36 V/v4c_requery_after_pressure: ttft=0.835s reused=None read=None sha=2528bf92405e
+2026-11-19_03:54:42 V/v5a_answer_cold: ttft=4.18s reused=None read=None sha=e59ae52c7265
+2026-11-19_03:54:44 V/v5b_answer_cached: ttft=0.048s reused=None read=None sha=e59ae52c7265
+2026-11-19_03:54:44 V/answer_identical_cold_vs_cached=False len=974/953
+2026-11-19_03:55:38 V/v6_unique_prompts_c4: c=4 ok=4/4 agg=19.0 tok/s dec_mean=141.2 ttft_mean=32.13s errors=[]
+2026-11-19_03:55:38 V/v6_unique_prompts_c4 KV: {"engine": {"model": "iq3s-strata0216", "max_context": 196608, "images": false, "gen": 1, "version": "0.1.62", "logit_bias": 1, "context": 196608, "kv": "int8", "kv_resident": 0, "
+2026-11-19_03:55:43 STAGE verify500x: done
+2026-11-19_03:55:43 STAGE_END verify500x rc=0
+2026-11-19_03:55:43 STAGE_START llama1
+2026-11-19_03:55:43 STAGE L1: serve up np=1 ctx=198144
+2026-11-19_03:56:55 L1: load failed n-cpu-moe=None, trying next variant
+2026-11-19_03:57:01 L1: load failed n-cpu-moe=None, trying next variant
+2026-11-19_03:57:07 L1: load failed n-cpu-moe=12, trying next variant
+2026-11-19_03:57:13 L1: load failed n-cpu-moe=24, trying next variant
+2026-11-19_03:57:19 STAGE L1: loaded in 3s (n-cpu-moe=48)
+2026-11-19_03:58:07 L1_single/p4k: pp=5198 ttft=29.647s decode=28.8 quarters=[29.6, 29.5, 27.2, 29.1]
+2026-11-19_04:02:17 L1_single/p32k: pp=39228 ttft=232.473s decode=30.3 quarters=[31.2, 30.0, 29.5, 30.4]
+2026-11-19_04:09:52 L1_single/p64k_code recall: 5/5 exact
+2026-11-19_04:09:52 L1_single/p64k_code: pp=71166 ttft=434.538s decode=27.4 quarters=[27.5, 27.7, 27.2, 27.0]
+2026-11-19_04:27:32 L1_single/p128k recall: 5/5 exact
+2026-11-19_04:27:32 L1_single/p128k: pp=172674 ttft=1045.299s decode=27.5 quarters=[26.5, 27.6, 27.4, 28.7]
+2026-11-19_04:46:28 L1_single/p184k: pp=184098 ttft=1125.666s decode=25.6 quarters=[27.6, 25.7, 27.0, 22.8]
+2026-11-19_04:51:16 L1_warm_warm/warm_turn1_cold: pp=50125 ttft=283.68s decode=26.2 quarters=[21.9, 28.3, 27.4, 28.5]
+2026-11-19_04:52:02 L1_warm/warm: cold_ttft=283.68s warm_ttft=1.633s reused=None read=None
+2026-11-19_04:52:07 STAGE L1: done
+2026-11-19_04:52:07 STAGE_END llama1 rc=0
+2026-11-19_04:52:07 STAGE_START llama2
+2026-11-19_04:52:07 STAGE L2: serve up np=8 ctx=270336
+2026-11-19_04:52:19 L2: load failed n-cpu-moe=None, trying next variant
+2026-11-19_04:52:25 L2: load failed n-cpu-moe=None, trying next variant
+2026-11-19_04:52:31 L2: load failed n-cpu-moe=12, trying next variant
+2026-11-19_04:52:37 L2: load failed n-cpu-moe=24, trying next variant
+2026-11-19_04:52:44 STAGE L2: loaded in 3s (n-cpu-moe=48)
+2026-11-19_04:52:44 L2_load/load32k_c2: c=2 ok=0/2 agg=0.0 tok/s dec_mean=None ttft_mean=Nones errors=["<HTTPError 400: 'Bad Request'>"]
+2026-11-19_04:52:44 L2_load/load32k_c2 KV: "<HTTPError 501: 'Not Implemented'>"
+2026-11-19_04:52:44 L2_load/load32k_c4: c=4 ok=0/4 agg=0.0 tok/s dec_mean=None ttft_mean=Nones errors=["<HTTPError 400: 'Bad Request'>"]
+2026-11-19_04:52:44 L2_load/load32k_c4 KV: "<HTTPError 501: 'Not Implemented'>"
+2026-11-19_04:52:44 L2_load/load32k_c8: c=8 ok=0/8 agg=0.0 tok/s dec_mean=None ttft_mean=Nones errors=["<HTTPError 400: 'Bad Request'>"]
+2026-11-19_04:52:44 L2_load/load32k_c8 KV: "<HTTPError 501: 'Not Implemented'>"
+2026-11-19_05:22:48 L2_sust/sustained: 1804s done req=264 err=263 dec_mean=14.8 p95=14.9 max_temp=77.0C throttled=1742
+2026-11-19_05:22:53 STAGE L2: done
+2026-11-19_05:22:53 STAGE_END llama2 rc=0
+2026-11-19_05:22:53 BRAIN_RESTORE_ISSUED
+2026-11-19_05:22:53 DRIVER_START stop_at=06:30
+2026-11-19_05:23:00 keep_up_parked stack_stopped vram_free=24075
+2026-11-19_05:23:03 llama_tag=b12532
+2026-11-19_05:23:12 llama_build_ok version: 1.0.0-dev (build 215, commit 08c252e22)
+built p4k: target=4096 est=4155 markers=0
+built p4k_a: target=4096 est=4156 markers=0
+built p4k_f1: target=2000 est=2059 markers=0
+built p32k: target=32768 est=32827 markers=0
+built p32k_a: target=32768 est=32828 markers=0
+built p32k_b: target=32768 est=32827 markers=0
+built p32k_c: target=32768 est=32828 markers=0
+built p40k: target=40960 est=41020 markers=0
+built p128k: target=131072 est=131143 markers=5
+built p64k_code: target=65536 est=65577 markers=5
+built p184k: target=155648 est=155719 markers=5
+2026-11-19_05:23:12 prompts_built
+2026-11-19_05:23:12 STAGE_START verify500x2
+2026-11-19_05:23:12 STAGE verify500x2: prefix-granularity reuse test
+2026-11-19_05:24:46 STAGE verify500x2: loaded in 93s
+2026-11-19_05:24:59 W/w1_cold_original_32k: ttft=12.679s reused=None read=None raw=None
+2026-11-19_05:25:05 W/w3_append_one_line: ttft=4.225s reused=None read=None raw=None
+2026-11-19_05:25:17 W/w4_midflip_one_char: ttft=11.415s reused=None read=None raw=None
+2026-11-19_05:25:18 W/w2_identical_repeat: ttft=0.509s reused=None read=None raw=None
+2026-11-19_05:25:24 STAGE verify500x2: done
+2026-11-19_05:25:24 STAGE_END verify500x2 rc=0
+2026-11-19_05:25:24 ALL_DONE
+2026-11-19_05:32:30 DRIVER_START stop_at=08:20
+2026-11-19_05:32:36 keep_up_parked stack_stopped vram_free=24075
+2026-11-19_05:34:36 llama_tag=NONE
+2026-11-19_05:34:39 llama_build_ok version: 1.0.0-dev (build 215, commit 08c252e22)
+built p4k: target=4096 est=4155 markers=0
+built p4k_a: target=4096 est=4156 markers=0
+built p4k_f1: target=2000 est=2059 markers=0
+built p32k: target=32768 est=32827 markers=0
+built p32k_a: target=32768 est=32828 markers=0
+built p32k_b: target=32768 est=32827 markers=0
+built p32k_c: target=32768 est=32828 markers=0
+built p40k: target=40960 est=41020 markers=0
+built p128k: target=131072 est=131143 markers=5
+built p64k_code: target=65536 est=65577 markers=5
+built p184k: target=155648 est=155719 markers=5
+2026-11-19_05:34:39 prompts_built
+2026-11-19_05:34:39 STAGE_START bitnet
+2026-11-19_05:34:39 STAGE N: serve up np=4 ctx=4096
+2026-11-19_05:34:42 STAGE N: loaded in 3s (n-cpu-moe=None)
+2026-11-19_05:34:42 N_single/p1k: FAILED <HTTPError 400: 'Bad Request'>
+2026-11-19_05:34:42 N_single/p3k: FAILED <HTTPError 400: 'Bad Request'>
+2026-11-19_05:34:42 N_warm_warm/warm_turn1_cold: FAILED <HTTPError 400: 'Bad Request'>
+2026-11-19_05:34:42 N_warm_warm foreign chats failed: <HTTPError 400: 'Bad Request'>
+2026-11-19_05:34:47 STAGE_END bitnet rc=1
+2026-11-19_05:34:47 STAGE_START llamacpu
+2026-11-19_05:34:47 STAGE C: serve up np=4 ctx=40000
+2026-11-19_05:36:02 STAGE C: loaded in 75s (n-cpu-moe=None)
+2026-11-19_05:37:12 C_single/p4k: pp=5198 ttft=35.06s decode=7.4 quarters=[7.3, 7.4, 7.2, 7.6]
+2026-11-19_05:37:13 C_single/p32k: FAILED <HTTPError 400: 'Bad Request'>
+2026-11-19_05:52:31 C_sust/sustained: 919s done req=80 err=0 dec_mean=6.1 p95=6.2 max_temp=53.0C throttled=879
+2026-11-19_05:52:35 STAGE C: done
+2026-11-19_05:52:35 STAGE_END llamacpu rc=0
+2026-11-19_05:52:36 STRATA_RETRY start
+2026-11-19_05:52:36 STAGE strata: already completed earlier, skipping
+2026-11-19_05:52:36 STRATA_RETRY rc=0
+2026-11-19_05:52:36 ALL_DONE

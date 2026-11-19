@@ -1,0 +1,8 @@
+We need answer user's question. Need use only dump. Need compare how project stores attention state and what it says about decoding cost when that state does not fit GPU. Quote exact numbers dump gives, list conditions, explain tradeoff. Need identify relevant sections: Qwen3.8-27B precision attention storage
+
+I have thought about this long enough; time to give my answer.
+The dump describes attention state in two different ways, depending on the model:
+
+## 1. Qwen3.8-27B: KV cache in fp16 or int8, with optional RAM residency
+
+From

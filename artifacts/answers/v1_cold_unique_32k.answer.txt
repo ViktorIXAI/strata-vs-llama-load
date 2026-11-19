@@ -1,0 +1,8 @@
+We need answer user's question. Need use only dump. Need compare how project stores attention state and what it says about decoding cost when that state does not fit GPU. Quote exact numbers dump gives, list conditions, explain tradeoff.
+
+We need parse dump. It includes multiple docs. Need identify attention state storage:
+
+I have thought about this long enough; time to give my answer.
+The dump describes attention state in two different ways, depending on the model:
+
+- **Qwen3.8-27B** stores ordinary attention K/V as **fp16**, or as **int8 codes with

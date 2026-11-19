@@ -1,0 +1,12 @@
+00:54:21 STAGE strata: probing serve configs (0.2.16 terminal readiness)
+00:54:24 STAGE strata: config v1_profile_ctx196k failed rc=1 in 3s
+Traceback (most recent call last):
+  File "$HOME/bench-load/loadbench.py", line 725, in <module>
+    main()
+  File "$HOME/bench-load/loadbench.py", line 698, in main
+    stage_strata()
+  File "$HOME/bench-load/loadbench.py", line 527, in stage_strata
+    a = cfg["args"]
+        ~~~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+05:52:36 STAGE strata: already completed earlier, skipping

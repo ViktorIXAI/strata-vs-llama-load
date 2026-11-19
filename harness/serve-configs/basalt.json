@@ -1,0 +1,31 @@
+{
+ "version": 2,
+ "server": {
+  "host": "127.0.0.1",
+  "port": 18084
+ },
+ "models": [
+  {
+   "model": "<model-store>/Qwen3.8-FN-IQ3_S.basalt",
+   "alias": "qwen3.8-flash-next-iq3_s-basalt",
+   "gpu": "0",
+   "kv": "int8",
+   "max-context": 196608,
+   "fit-max-tokens": true
+  }
+ ],
+ "engine": {
+  "resident-experts": true,
+  "expert-cache": "auto",
+  "prefill": "auto",
+  "vram-reserve-mib": 500,
+  "resident-budget-gib": 46,
+  "resident-cpu-experts": true,
+  "conversation-cache-mib": 6144,
+  "conversation-cache-slots": 6,
+  "conversation-cache-disk-mib": 20480,
+  "vision": "dynamic",
+  "expert-profile-save": "<model-store>/placement.prof",
+  "max-context": 196608
+ }
+}

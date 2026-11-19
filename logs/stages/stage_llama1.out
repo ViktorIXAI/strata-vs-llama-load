@@ -1,0 +1,51 @@
+00:05:17 STAGE L1: serve up np=1 ctx=135168
+00:05:20 L1: load failed n-cpu-moe=None, trying next variant
+00:05:26 L1: load failed n-cpu-moe=None, trying next variant
+00:05:32 L1: load failed n-cpu-moe=12, trying next variant
+00:05:38 L1: load failed n-cpu-moe=24, trying next variant
+00:53:13 STAGE L1: serve up np=1 ctx=198144
+00:53:16 L1: load failed n-cpu-moe=None, trying next variant
+00:53:22 L1: load failed n-cpu-moe=None, trying next variant
+00:53:28 L1: load failed n-cpu-moe=12, trying next variant
+00:53:34 L1: load failed n-cpu-moe=24, trying next variant
+00:53:44 L1: load failed n-cpu-moe=48, trying next variant
+00:53:47 L1_LOAD_FAILED tail=error: invalid argument: --fa
+
+02:48:08 STAGE L1: serve up np=1 ctx=198144
+02:49:05 L1: load failed n-cpu-moe=None, trying next variant
+02:49:11 L1: load failed n-cpu-moe=None, trying next variant
+02:49:18 L1: load failed n-cpu-moe=12, trying next variant
+02:49:24 L1: load failed n-cpu-moe=24, trying next variant
+02:49:33 STAGE L1: loaded in 6s (n-cpu-moe=48)
+02:50:27 L1_single/p4k: pp=5198 ttft=Nones decode=10.7 quarters=[None, None, None, None]
+02:54:36 L1_single/p32k: pp=39228 ttft=Nones decode=2.1 quarters=[None, None, None, None]
+03:02:48 L1_single/p64k_code recall: 0/5 exact
+03:02:48 L1_single/p64k_code: pp=74962 ttft=Nones decode=1.1 quarters=[None, None, None, None]
+03:16:52 STAGE L1: serve up np=1 ctx=198144
+03:16:55 L1: load failed n-cpu-moe=None, trying next variant
+03:17:01 L1: load failed n-cpu-moe=None, trying next variant
+03:17:08 L1: load failed n-cpu-moe=12, trying next variant
+03:17:14 L1: load failed n-cpu-moe=24, trying next variant
+03:17:20 STAGE L1: loaded in 3s (n-cpu-moe=48)
+03:18:09 L1_single/p4k: pp=5198 ttft=30.737s decode=29.4 quarters=[28.6, 29.8, 30.7, 28.7]
+03:22:16 L1_single/p32k: pp=39228 ttft=229.265s decode=29.1 quarters=[28.3, 29.3, 28.7, 30.0]
+03:29:51 L1_single/p64k_code recall: 5/5 exact
+03:29:51 L1_single/p64k_code: pp=71166 ttft=434.921s decode=27.9 quarters=[27.0, 27.9, 28.9, 27.6]
+03:47:28 L1_single/p128k recall: 5/5 exact
+03:47:28 L1_single/p128k: pp=172674 ttft=1042.64s decode=28.2 quarters=[29.7, 27.1, 28.0, 28.2]
+03:55:43 STAGE L1: serve up np=1 ctx=198144
+03:56:55 L1: load failed n-cpu-moe=None, trying next variant
+03:57:01 L1: load failed n-cpu-moe=None, trying next variant
+03:57:07 L1: load failed n-cpu-moe=12, trying next variant
+03:57:13 L1: load failed n-cpu-moe=24, trying next variant
+03:57:19 STAGE L1: loaded in 3s (n-cpu-moe=48)
+03:58:07 L1_single/p4k: pp=5198 ttft=29.647s decode=28.8 quarters=[29.6, 29.5, 27.2, 29.1]
+04:02:17 L1_single/p32k: pp=39228 ttft=232.473s decode=30.3 quarters=[31.2, 30.0, 29.5, 30.4]
+04:09:52 L1_single/p64k_code recall: 5/5 exact
+04:09:52 L1_single/p64k_code: pp=71166 ttft=434.538s decode=27.4 quarters=[27.5, 27.7, 27.2, 27.0]
+04:27:32 L1_single/p128k recall: 5/5 exact
+04:27:32 L1_single/p128k: pp=172674 ttft=1045.299s decode=27.5 quarters=[26.5, 27.6, 27.4, 28.7]
+04:46:28 L1_single/p184k: pp=184098 ttft=1125.666s decode=25.6 quarters=[27.6, 25.7, 27.0, 22.8]
+04:51:16 L1_warm_warm/warm_turn1_cold: pp=50125 ttft=283.68s decode=26.2 quarters=[21.9, 28.3, 27.4, 28.5]
+04:52:02 L1_warm/warm: cold_ttft=283.68s warm_ttft=1.633s reused=None read=None
+04:52:07 STAGE L1: done

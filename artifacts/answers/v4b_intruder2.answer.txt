@@ -1,0 +1,9 @@
+We need answer user's question. Need use only dump. Need compare how project stores attention state and what it says about decoding cost when that state does not fit GPU. Quote exact numbers dump gives, list conditions, explain tradeoff.
+
+We need parse dump. Relevant sections:
+- Models index: KV cache formats
+
+I have thought about this long enough; time to give my answer.
+Basalt stores attention state in a KV cache, but the exact storage and the cost when it does not fit the GPU differ by model.
+
+## 1. Qwen3.8-Flash-Next: KV cache normally
