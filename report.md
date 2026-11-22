@@ -1,6 +1,7 @@
 # Three engines, one RTX 5090 Laptop, one IQ3_S MoE — measured on identical arms
 
 See [llama-optimized.md](llama-optimized.md) for the re-test with MoE-cache optimization (2026-11-20).
+See [strata-0165.md](strata-0165.md) for the 2026-11-22 re-measure of this same Qwen ladder on engine 0.1.65. Old numbers below are unchanged.
 
 Run date: 2026-11-19, 00:16–05:53 CET, single box, detached driver. Driver deadline 05:50;
 arms that did not finish before it are listed in §8 as missing, not silently dropped.
